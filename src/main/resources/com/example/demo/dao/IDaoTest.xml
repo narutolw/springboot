@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.IDaoTest">
+    <!--根据用户名密码查询用户信息-->
+    <!--application.yml 中通过 type-aliases-package 指定了实体类的为了，因此-->
+    <select id="queryDataCount" resultType="int">
+        select count(1)
+        from testtable
+    </select>
+</mapper>

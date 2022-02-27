@@ -3,8 +3,15 @@
 <mapper namespace="com.example.demo.dao.IDaoTest">
     <!--根据用户名密码查询用户信息-->
     <!--application.yml 中通过 type-aliases-package 指定了实体类的为了，因此-->
-    <select id="queryDataCount" resultType="int">
-        select count(1)
-        from testtable
-    </select>
+    <insert id="queryDataCount">
+        insert into testtable
+        (
+        name,
+        age,
+        hobby
+        ) values
+        (
+        '王五','20','篮球'
+        )
+    </insert>
 </mapper>

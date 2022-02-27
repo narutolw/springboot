@@ -29,6 +29,10 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/dev
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  spring:
+    aop:
+      auto: true
+
   mybatis:
     # 指定 mapper.xml 的位置
     mapper-locations: classpath:com/example/demo/dao/*.xml

@@ -9,6 +9,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Vector;
+import java.util.concurrent.*;
 
 @SpringBootTest
 class DemoApplicationTests {
@@ -20,6 +24,76 @@ class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {
+	}
+
+	@Test
+	void testThreadLocal() {
+
+//		ThreadLocal<Integer> a = new ThreadLocal<>();
+//		a.set(0);
+//		System.out.println(a.get());
+//		AtomicInteger b = new AtomicInteger();
+//		b.addAndGet(1);
+//		AtomicStampedReference c = new AtomicStampedReference(b, 1);
+//		Executors.newFixedThreadPool();
+		Vector a = new Vector();
+		Collections.synchronizedList(new ArrayList<>());
+		final ExecutorService executorService =
+				new ThreadPoolExecutor(
+						2,
+						3,
+						4,
+						TimeUnit.MINUTES,
+						new ArrayBlockingQueue<>(1),
+						new ThreadPoolExecutor.AbortPolicy());
+		final Future<?> submit = executorService.submit(() -> {
+			try {
+				Thread.sleep(10000000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+		final Future<?> submit2 = executorService.submit(() -> {
+			try {
+				Thread.sleep(10000000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+		final Future<?> submit3 = executorService.submit(() -> {
+			try {
+				Thread.sleep(10000000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+		final Future<?> submit4 = executorService.submit(() -> {
+			try {
+				Thread.sleep(10000000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+		final Future<?> submit5 = executorService.submit(() -> {
+			try {
+				Thread.sleep(10000000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		});
+		try {
+			submit.get();
+			submit2.get();
+			submit3.get();
+			submit4.get();
+			submit5.get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+
+
 	}
 
 	@Test
